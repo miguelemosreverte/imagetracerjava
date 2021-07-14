@@ -59,7 +59,7 @@ Build and copy ```ImageTracer-1.1.4.jar``` to your library folder and
 add it to your build path.
 
 #### Maven:  
-##### Jitpack (downloads straight from Github):
+#### Jitpack (downloads straight from Github):
 Add the "jitpack" site as a repository to your repositories, like so:
 
 ```xml
@@ -93,7 +93,7 @@ Then add the github-address of this library with the latest commit hash as versi
 
 See also: [https://jitpack.io](https://jitpack.io)
 
-##### Local lib-folder:
+#### Local lib-folder:
 Add the "lib" folder as a repository
 
 Build the imagetracer maven-project and from the .m2 directory (in the users home dir), copy this libraries file structor to the "lib" folder in your project:

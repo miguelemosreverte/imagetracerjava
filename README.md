@@ -55,93 +55,94 @@ java -jar ImageTracer.jar smiley.png outfilename output.svg ltres 1 qtres 1 path
 
 #### No Project Management tool:
 
-Build and copy ```ImageTracer-1.1.4.jar``` to your library folder and 
-add it to your build path.
+1. Build library
+2. Copy ```ImageTracer-1.1.4.jar``` from the output directory to your project's library folder
+3. Add it to your build path.
 
 #### Maven:  
 #### Jitpack (downloads straight from Github):
-Add the "jitpack" site as a repository to your repositories, like so:
+1. Add the "jitpack" site as a repository to your repositories, like so:
 
-```xml
-<repositories>
-	<repository>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-		<id>central</id>
-		<name>Central Repository</name>
-		<url>https://repo.maven.apache.org/maven2</url>
-	</repository>
-	<repository>
-		<id>jitpack.io</id>
-		<url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
+	```xml
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	```
 
-Then add the github-address of this library with the latest commit hash as version to your dependencies:
+2. Add the github-address of this library with the latest commit hash as version to your dependencies:
 
-```xml
-<dependencies>
-	<dependency>
-		<groupId>com.github.miguelemosreverte</groupId>
-		<artifactId>imagetracerjava</artifactId>
-		<version>6f38a40</version> <!-- version 1.1.4 -->
-	</dependency>
-</dependencies>
-```
+	```xml
+	<dependencies>
+		<dependency>
+			<groupId>com.github.miguelemosreverte</groupId>
+			<artifactId>imagetracerjava</artifactId>
+			<version>6f38a40</version> <!-- version 1.1.4 -->
+		</dependency>
+	</dependencies>
+	```
 
 See also: [https://jitpack.io](https://jitpack.io)
 
 #### Local lib-folder:
-Add the "lib" folder as a repository
+1. Add the "lib" folder as a repository
+2. Build the imagetracer maven-project 
+3. from the .m2 directory (in the users home dir), copy this libraries file structor to the "lib" folder in your project:
 
-Build the imagetracer maven-project and from the .m2 directory (in the users home dir), copy this libraries file structor to the "lib" folder in your project:
+	```
+	+MyProject
+	 *src
+	 +lib
+	  +jankovicsandras.imagetracer
+	    +imagetracer
+	     +ImageTracer
+		     +1.1.4
+		      _remote.repositories
+		      ImageTracer-1.1.4.jar
+		      ImageTracer-1.1.4.pom
+		     maven-metadata-local.xml     
+	```
 
-```
-+MyProject
- *src
- +lib
-  +jankovicsandras.imagetracer
-    +imagetracer
-     +ImageTracer
-	     +1.1.4
-	      _remote.repositories
-	      ImageTracer-1.1.4.jar
-	      ImageTracer-1.1.4.pom
-	     maven-metadata-local.xml     
-```
+4. Add the lib-folder as repository to your pom-file:
 
-Then add the lib-folder as repository to your pom-file:
+	```xml
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+		<repository>
+			<id>lib_folder</id>
+			<url>file://${basedir}/lib/</url>
+		</repository>
+	</repositories>
+	```
 
-```xml
-<repositories>
-	<repository>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-		<id>central</id>
-		<name>Central Repository</name>
-		<url>https://repo.maven.apache.org/maven2</url>
-	</repository>
-	<repository>
-		<id>lib_folder</id>
-		<url>file://${basedir}/lib/</url>
-	</repository>
-</repositories>
-```
+5. Now include the dependency to the library:
 
-Now include the dependency to the library:
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>jankovicsandras.imagetracer</groupId>
-		<artifactId>ImageTracer</artifactId>
-		<version>1.1.4</version>
-	</dependency>
-</dependencies>
-```
+	```xml
+	<dependencies>
+		<dependency>
+			<groupId>jankovicsandras.imagetracer</groupId>
+			<artifactId>ImageTracer</artifactId>
+			<version>1.1.4</version>
+		</dependency>
+	</dependencies>
+	```
 
 #### Using the library
 
